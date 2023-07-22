@@ -12,7 +12,8 @@ spec:
       name: server-{{ .index }}
       namespace: default
       labels: 
-        xxxx: '{{ .var1.spec.interfaceName }}'
+        a: '{{ .var1.spec.interfaceName }}'
+        b: '{{ .var1.spec.interfaceName2 }}'
     spec:
       labels:
         topo.nephio.org/position: server

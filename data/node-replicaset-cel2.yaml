@@ -12,7 +12,8 @@ spec:
       name: "celexpr: 'server-' + index"
       namespace: default
       labels:
-        xxxx: "celexpr: var1.spec.interfaceName"
+        x: "celexpr: var1.spec.interfaceName"
+        #y: "celexpr: var1.spec.interfaceName2"
     spec:
       labels:
         topo.nephio.org/position: server
