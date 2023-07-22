@@ -1,0 +1,17 @@
+apiVersion: inv.nephio.org/v1alpha1
+kind: Endpoint
+metadata:
+  name: leaf1-e1-1
+  namespace: default
+  labels:
+    nephio.org/interface-name: e1-1
+    nephio.org/node-name: leaf1
+    nephio.org/provider: srlinux.nokia.com
+    topo.nephio.org/position: leaf
+    topo.nephio.org/rack: rack1
+    topo.nephio.org/rack-index: "0"
+    topo.nephio.org/topology: nephio
+spec:
+  interfaceName: e1-1
+  nodeName: leaf1
+  provider: srlinux.nokia.com

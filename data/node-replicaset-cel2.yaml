@@ -1,0 +1,20 @@
+apiVersion: auto.nephio.org/v1alpha1
+kind: ReplicaSet
+metadata:
+  name: node
+  namespace: default
+spec:
+  replicas: 10
+  template:
+    apiVersion: inv.nephio.org/v1alpha1
+    kind: node
+    metadata:
+      name: "celexpr: 'server-' + index"
+      namespace: default
+      labels:
+        xxxx: "celexpr: var1.spec.interfaceName"
+    spec:
+      labels:
+        topo.nephio.org/position: server
+        topo.nephio.org/rack: rack1
+      provider: server.nephio.com
