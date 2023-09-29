@@ -13,15 +13,11 @@ import (
 )
 
 const (
-	celExprPrefix = "celexpr: "
-)
-
-const (
 	index              = "index"
 	key                = "key"
 	value              = "value"
 	var1               = "var1"
-	replicaSetFileName = "data/node-replicaset-cel2.yaml"
+	replicaSetFileName = "data/node-replicaset-cel3.yaml"
 	endpointFileName   = "data/endpoint_leaf1-e1-1.yaml"
 )
 
@@ -63,7 +59,6 @@ func main() {
 			}
 
 			fmt.Printf("result: %d\n%v\n", i, string(b))
-
 		}
 	}
 
@@ -170,18 +165,20 @@ func (r *renderer) Render(x any) (any, error) {
 			}
 		}
 	case string:
-		if strings.HasPrefix(x, celExprPrefix) {
-			//fmt.Printf("expression: %s\n", strings.TrimPrefix(x, celExprPrefix))
+		split := strings.Split(x, "$")
+		if len(split) > 1 {
+			x = strings.ReplaceAll(x, "$", "")
+			fmt.Printf("expression: %s\n", x)
 			//return strings.TrimPrefix(x, celExprPrefix), nil
 			env, err := getCelEnv()
 			if err != nil {
 				return nil, err
 			}
-			ast, iss := env.Compile(strings.TrimPrefix(x, celExprPrefix))
+			ast, iss := env.Compile(x)
 			if iss.Err() != nil {
-				//panic(iss.Err())
 				return nil, err
 			}
+			fmt.Println("ast", ast)
 			_, err = cel.AstToCheckedExpr(ast)
 			if err != nil {
 				//panic(err)

@@ -15,8 +15,8 @@ const (
 	key                = "key"
 	value              = "value"
 	var1               = "var1"
-	replicaSetFileName = "../data/node-replicaset-gotempl.yaml"
-	endpointFileName   = "../data/endpoint_leaf1-e1-1.yaml"
+	replicaSetFileName = "data/node-replicaset-gotempl.yaml"
+	endpointFileName   = "data/endpoint_leaf1-e1-1.yaml"
 )
 
 func main() {
